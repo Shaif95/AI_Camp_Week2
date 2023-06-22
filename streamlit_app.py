@@ -104,7 +104,7 @@ kai = px.scatter(bar,
 st.plotly_chart(kai)
 
 st.write(
-  "The graph above shows the relation between the Economic Freedom Summary Index and the Region where a country lies. North America, Oceania,  and Europe all have a relatively high index while countries in Africa and Latin America aren't as fortunate."
+  "The graph above shows the relation between the Economic Freedom Summary Index and the Region where a country lies. North America, Oceania, Southeast Asia, and Western Europe all have a relatively high index while countries in Africa, the Middle East, and Latin America aren't as fortunate."
 )
 #Does economic freedom Quartile relate to region ?
 st.title("Relation Between Location and Quartile")
@@ -214,12 +214,13 @@ sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
 n = 50
 govt_employ = sorted_df.head(n)
 
-st.plotly_chart(
-  px.bar(govt_employ,
+bar_plot1 =  px.bar(govt_employ,
          x="Quantile",
          y="Government Employment",
          hue="Economic Freedom Summary Index",
-         title="Government employ. effect on quantile of states"))
+         title="Government employ. effect on quantile of states")
+
+st.plotly_chart(bar_plot1)
 
 st.write(
   "As we can see in these two charts, the taxes and government employment do factor into the effective quantile a state is in. The charts show that the taxation has a larger impact on quantile than employment."
