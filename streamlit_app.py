@@ -114,23 +114,25 @@ st.header(
 #Pie Charts
 kai = dfw.copy()
 
-quartiles = kai['Quartile'].unique() # 1, 2, 3, 4
+quartiles = sorted(kai['Quartile'].unique())
 
 for quartile in quartiles:
-    quartile_current = kai[kai['Quartile'] == quartile]
+  quartile_current = kai[kai['Quartile'] == quartile]
 
-    quartile_counts = quartile_current.shape[0]
+  quartile_counts = quartile_current.shape[0]
 
-    region_count = quartile_current['Region'].value_counts().reset_index()
-    region_count.columns = ['Region', 'Count']
+  region_count = quartile_current['Region'].value_counts().reset_index()
+  region_count.columns = ['Region', 'Count']
 
-    if not math.isnan(quartile):
-        quartile = int(quartile)
+  if not math.isnan(quartile):
+    quartile = int(quartile)
 
-        pieChart = px.pie(region_count, values='Count', names='Region',
-                          title=f'Region Distribution in Quartile {quartile}')
+    pieChart = px.pie(region_count,
+                      values='Count',
+                      names='Region',
+                      title=f'Region Distribution in Quartile {quartile}')
 
-        st.plotly_chart(pieChart)
+    st.plotly_chart(pieChart)
 
 st.write(
   "These four graphs show the Region distribution amongst the four quartiles. A majority of Quartile 1 is made up of European nations while Quartile 4 is made up of Africa, Latin America, and South Asia."
@@ -286,10 +288,11 @@ st.plotly_chart(
          color='Quantile',
          title='Minimum Wage Legislation by Quartile (1970 - 2020)'))
 
-st.write("Here we can see that Quartile 1 has the highest Minimum Wage Legislation.")
+st.write(
+  "Here we can see that Quartile 1 has the highest Minimum Wage Legislation.")
 # Bar chart of taxes for each quartile.
 
-st.heading("Hypothesis: Which Quartile in the US Has The Highest Taxes?")
+st.write("Hypothesis: Which Quartile in the US Has The Highest Taxes?")
 
 mean_summary_index = df.groupby('Quantile')['Taxes'].mean().reset_index()
 
