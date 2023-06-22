@@ -330,6 +330,4 @@ for q in quartiles:
            names='World Bank Current Income Classification, 1990-present ',
            title=f'Income Classification in Quartile {q}'))
 
-
-
 #Conclusion : Ava
