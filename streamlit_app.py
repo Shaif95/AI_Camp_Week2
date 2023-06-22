@@ -161,14 +161,14 @@ sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 10
 top_tcountries = sorted_dfw.head(n)
 
-st.plotly_chart(
-  px.scatter(top_countries,
-             x="Economic Freedom Summary Index",
-             y="1D  Top marginal tax rate",
-             hue="Quartile").update_layout(
-               title='Scatter Plot',
-               xaxis_title='Economic Freedom Summary Index',
-               yaxis_title='1D Top marginal tax rate'))
+#st.plotly_chart(
+#  px.scatter(top_countries,
+#             x="Economic Freedom Summary Index",
+#             y="1D  Top marginal tax rate",
+#             hue="Quartile").update_layout(
+#               title='Scatter Plot',
+#               xaxis_title='Economic Freedom Summary Index',
+#               yaxis_title='1D Top marginal tax rate'))
 
 st.write(
   "The chart shoes that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation."
