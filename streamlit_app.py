@@ -114,21 +114,23 @@ st.header(
 #Pie Charts
 kai = dfw.copy()
 
-quartiles = kai['Quartile'].unique()  # 1,2,3,4
+quartiles = kai['Quartile'].unique() # 1, 2, 3, 4
 
-for quartile_val in quartiles:
-  quartile_current = kai[kai['Quartile'] == quartile_val]
-  quartile_counts = quartile_current.shape[0]
+for quartile in quartiles:
+    quartile_current = kai[kai['Quartile'] == quartile]
 
-  region_count = quartile_current['Region'].value_counts().reset_index()
-  region_count.columns = ['Region', 'Count']
+    quartile_counts = quartile_current.shape[0]
 
-  pieChart = px.pie(region_count,
-                    values='Count',
-                    names='Region',
-                    title=f'Region Distribution in Quartile {quartile_val}')
+    region_count = quartile_current['Region'].value_counts().reset_index()
+    region_count.columns = ['Region', 'Count']
 
-  st.plotly_chart(pieChart)
+    if not math.isnan(quartile):
+        quartile = int(quartile)
+
+        pieChart = px.pie(region_count, values='Count', names='Region',
+                          title=f'Region Distribution in Quartile {quartile}')
+
+        st.plotly_chart(pieChart)
 
 st.write(
   "These four graphs show the Region distribution amongst the four quartiles. A majority of Quartile 1 is made up of European nations while Quartile 4 is made up of Africa, Latin America, and South Asia."
@@ -172,7 +174,7 @@ top_tcountries = sorted_dfw.head(n)
 #               yaxis_title='1D Top marginal tax rate'))
 
 st.write(
-  "The chart shoes that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation."
+  "The chart shows that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation."
 )
 #What is relation of taxes and Govt emloyment with Quartile.
 
@@ -284,20 +286,19 @@ st.plotly_chart(
          color='Quantile',
          title='Minimum Wage Legislation by Quartile (1970 - 2020)'))
 
-st.write(
-  "Here we can see that Quartile 1 has the highest Minimum Wage Legislation.")
+st.write("Here we can see that Quartile 1 has the highest Minimum Wage Legislation.")
 # Bar chart of taxes for each quartile.
 
 st.heading("Hypothesis: Which Quartile in the US Has The Highest Taxes?")
 
 mean_summary_index = df.groupby('Quantile')['Taxes'].mean().reset_index()
 
-st.plotly_chart(
-  px.bar(mean_summary_index,
-         x='Quantile',
-         y='Taxes',
-         color='Quantile',
-         title='Taxes by Quartile (1970 - 2020)'))
+#st.plotly_chart(
+#  px.bar(mean_summary_index,
+#         x='Quantile',
+#         y='Taxes',
+#         color='Quantile',
+#         title='Taxes by Quartile (1970 - 2020)'))
 
 st.write("Quartile 1 has the highest taxes")
 
