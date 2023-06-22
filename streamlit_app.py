@@ -48,8 +48,25 @@ fig = px.bar(top_countries, x='Countries', y='Economic Freedom Summary Index', c
 fig.update_yaxes(range=[7.5, 8.6])
 
 st.plotly_chart(fig)
-#Does location affect the economic freedom summary index for countries ?
 
+st.write("The graph above shows the top 25 countries by the Economic Freedom Summary Index. The countries with the highest index are Hong Kong and Singapore, both small Asian nations with high economic development.")
+
+kai = dfw.head(165)
+sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
+n = 25
+bottom_countries = sorted_dfw.tail(n)
+
+fig = px.bar(bottom_countries, x='Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+             title=f'Bottom {n} Countries by Index (2020)')
+
+fig.update_yaxes(range=[3, 6])
+
+st.plotly_chart(fig)
+
+st.write("The graph above shows the bottom 25 countries by the Economic Freedom Summary Index. The country with the lowest index is Venezuela, highly contributed to it's corruption in government and mismanagement of the country's economy.")
+#Does location affect the economic freedom summary index for countries ?
+st.title("Relation Between Location and Index")
+st.header("Hypothesis: Does location affect the econonomic freedom index for countries?")
 #Scatter Plots for index vs region
 
 #Does economic freedom Quartile relate to region ?
@@ -66,7 +83,8 @@ sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 100
 top_tcountries = sorted_dfw.head(n)
 
-st.plotly_chart(px.scatter(top_tcountries, x= ""))
+st.plotly_chart(px.scatter(top_tcountries, x= "Economic Freedom Summary Index", y= "1D  Top marginal tax rate", hue="Quartile",
+                          title=f"Top {n} countries by taxed quartile"))
 #What is relation of taxes and Govt emloyment with Quartile.
 
 #Bar chart of mean of taxes for each quartile.
@@ -89,12 +107,15 @@ sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
 n = 10
 top_states = sorted_df.head(n)
 
-fig = st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
              title=f'Top {n} States by Index'))
 
-fig.update_yaxes(range=[6,8])
 
-fig.show()
+
+
+
+st.write("We can see from the bar graph that the states with the highest economic freedom are Florida, New Hampshire, and South Dakota")
+
 
 st.header("Hypothesis: Which States Have The Least Economic Freedom?")
 
@@ -115,7 +136,7 @@ st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summ
 
 st.header("Hypothesis: Which Countries Have The Highest Economic Freedom?")
 
-data1 = wdf.head(165)
+data1 = dfw.head(165)
 
 sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
 
@@ -127,6 +148,9 @@ st.plotly_chart(px.bar(top_country, x= 'Countries', y='Economic Freedom Summary 
 
 
 # What is relation of Min Wage with Quartile?
+
+st.header("Hypothesis: What Is The Relation of Minimum Wage With Quartile?")
+          
 
 # Bar chart of taxes for each quartile.
 
