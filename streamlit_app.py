@@ -63,7 +63,10 @@ st.header("Hypothesis: Do higher taxes relate to more economic freedom?")
 TIQ = dfw.head(165)
 sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
-n=
+n = 100
+top_tcountries = sorted_dfw.head(n)
+
+st.plotly_chart(px.scatter(top_tcountries, x= ""))
 #What is relation of taxes and Govt emloyment with Quartile.
 
 #Bar chart of mean of taxes for each quartile.
@@ -102,7 +105,7 @@ sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=True)
 n = 10
 top_states = sorted_df.head(n)
 
-st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color="Economic Freedom Summary Index"
+st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
              title=f'Bottom {n} States by Index'))
 
 
@@ -119,12 +122,9 @@ sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
 n = 10
 top_country = sorted_df.head(n)
 
-fig = st.plotly_chart(px.bar(top_country, x= 'Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+st.plotly_chart(px.bar(top_country, x= 'Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
              title=f'Top {n} Countries by Index'))
 
-fig.update_yaxes(range=[6.5,9])
-
-fig.show()
 
 # What is relation of Min Wage with Quartile?
 
