@@ -104,7 +104,7 @@ kai = px.scatter(bar,
 st.plotly_chart(kai)
 
 st.write(
-  "The graph above shows the relation between the Economic Freedom Summary Index and the Region where a country lies. North America, Oceania, and Europe all have a relatively high index while countries in Africa and Latin America aren't as fortunate."
+  "The graph above shows the relation between the Economic Freedom Summary Index and the Region where a country lies. North America, Oceania,  and Europe all have a relatively high index while countries in Africa and Latin America aren't as fortunate."
 )
 #Does economic freedom Quartile relate to region ?
 st.title("Relation Between Location and Quartile")
@@ -171,12 +171,14 @@ scatter_plot = px.scatter(top_countries,
                           y="1D  Top marginal tax rate",
                           color="Quartile",
                           title="Scatter Plot",
-                          labels={"Economic Freedom Summary Index": "EFSI", "1D  Top marginal tax rate": "Top Marginal Tax Rate"},
+                          labels={
+                            "Economic Freedom Summary Index": "EFSI",
+                            "1D  Top marginal tax rate":
+                            "Top Marginal Tax Rate"
+                          },
                           hover_name="Countries")
 
-
 st.plotly_chart(scatter_plot)
-
 
 st.write(
   "The chart shows that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation."
@@ -192,12 +194,16 @@ sorted_df = TbQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
 n = 50
 taxable_quantiles = sorted_df.head(n)
-
-bar_plot =   px.bar(taxable_quantiles,
-         x="Quantile",
-         y="Taxes",
-         hue="Economic Freedom Summary Index",
-         title="Tax impact on quantiles of states")
+bar_plot = px.bar(taxable_quantiles,
+                  x="Quantile",
+                  y="Taxes",
+                  color="Economic Freedom Summary Index",
+                  title="Tax Impact on Quantiles of States",
+                  labels={
+                    "Quantile": "Quantile",
+                    "Taxes": "Taxes",
+                    "Economic Freedom Summary Index": "EFSI"
+                  })
 
 st.plotly_chart(bar_plot)
 
