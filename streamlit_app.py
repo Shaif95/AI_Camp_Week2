@@ -30,11 +30,12 @@ st.header("Introduction")
 st.write("The Economic Freedom Index is a measure that assesses the level of economic freedom and openness in a country. It takes into account factors such as the rule of law, property rights, government intervention, and trade freedom, providing a comparative analysis of economic environments worldwide.")
 
 st.subheader("Data Tables:")
-df.head(5)
-dfw.head(5)
+st.dataframe(df)
+st.dataframe(dfw)
 # Kai
 # What are countries with most and least economic freedom ?
-
+st.title("Countries with Most and Least Economic Freedom")
+st.header("Hypothesis: What countries have the highest and lowest Economic Freedom Index?")
 # Bar chart of index and top countries
 
 #Does location affect the economic freedom summary index for countries ?
@@ -49,7 +50,11 @@ dfw.head(5)
 st.title("How do taxes relate to the Economic Freedom Summary Index?")
 st.header("Hypothesis: Do higher taxes relate to more economic freedom?")
 #Scatter Plot of Taxes vs Index (Hue Quartile)
-
+fig = st.plotly_chart(px.s(
+    data=dfw.head(100),
+    x="Economic Freedom Summary Index", y="1D  Top marginal tax rate",
+    hue="Quartile",
+)
 #What is relation of taxes and Govt emloyment with Quartile.
 
 #Bar chart of mean of taxes for each quartile.
@@ -88,14 +93,27 @@ sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=True)
 n = 10
 top_states = sorted_df.head(n)
 
-fig = st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color="Economic Freedom Summary Index"
              title=f'Bottom {n} States by Index'))
 
-fig.update_yaxes(range=[2,6])
 
-fig.show()
+
 
 # Bar chart of index and top countries
+
+data1 = wdf.head(165)
+
+sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
+
+n = 10
+top_country = sorted_df.head(n)
+
+fig = px.bar(top_country, x= 'Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+             title=f'Top {n} Countries by Index')
+
+fig.update_yaxes(range=[6.5,9])
+
+fig.show()
 
 # What is relation of Min Wage with Quartile?
 
