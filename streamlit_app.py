@@ -166,14 +166,17 @@ sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 100
 top_tcountries = sorted_dfw.head(n)
 
-st.plotly_chart(
-  px.scatter(top_countries,
-             x="Economic Freedom Summary Index",
-             y="1D  Top marginal tax rate",
-             hue="Quartile").update_layout(
-               title='Scatter Plot',
-               xaxis_title='Economic Freedom Summary Index',
-               yaxis_title='1D Top marginal tax rate'))
+scatter_plot = px.scatter(top_countries,
+                          x="Economic Freedom Summary Index",
+                          y="1D  Top marginal tax rate",
+                          color="Quartile",
+                          title="Scatter Plot",
+                          labels={"Economic Freedom Summary Index": "EFSI", "1D  Top marginal tax rate": "Top Marginal Tax Rate"},
+                          hover_name="Countries")
+
+
+st.plotly_chart(scatter_plot)
+
 
 st.write(
   "The chart shows that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation."
@@ -190,12 +193,12 @@ sorted_df = TbQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 50
 taxable_quantiles = sorted_df.head(n)
 
-#st.plotly_chart(
-#  px.bar(taxable_quantiles,
-#         x="Quantile",
-#         y="Taxes",
-#         hue="Economic Freedom Summary Index",
-#         title="Tax impact on quantiles of states"))
+st.plotly_chart(
+  px.bar(taxable_quantiles,
+         x="Quantile",
+         y="Taxes",
+         hue="Economic Freedom Summary Index",
+         title="Tax impact on quantiles of states"))
 
 GovtQ = df.head()
 sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
@@ -204,12 +207,12 @@ sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
 n = 50
 govt_employ = sorted_df.head(n)
 
-#st.plotly_chart(
-#  px.bar(govt_employ,
-#         x="Quantile",
-#         y="Government Employment",
-#         hue="Economic Freedom Summary Index",
-#         title="Government employ. effect on quantile of states"))
+st.plotly_chart(
+  px.bar(govt_employ,
+         x="Quantile",
+         y="Government Employment",
+         hue="Economic Freedom Summary Index",
+         title="Government employ. effect on quantile of states"))
 
 st.write(
   "As we can see in these two charts, the taxes and government employment do factor into the effective quantile a state is in. The charts show that the taxation has a larger impact on quantile than employment."
