@@ -266,22 +266,6 @@ st.plotly_chart(
 
 # Bar chart of index and top countries
 
-st.header("Hypothesis: Which Countries Have The Highest Economic Freedom?")
-
-data1 = dfw.head(165)
-
-sorted_df = data1.sort_values('Economic Freedom Summary Index',
-                              ascending=False)
-
-n = 10
-top_country = sorted_df.head(n)
-
-st.plotly_chart(
-  px.bar(top_country,
-         x='Countries',
-         y='Economic Freedom Summary Index',
-         color='Economic Freedom Summary Index',
-         title=f'Top {n} Countries by Index'))
 
 # What is relation of Min Wage with Quartile?
 
