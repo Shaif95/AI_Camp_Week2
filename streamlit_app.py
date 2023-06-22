@@ -122,7 +122,6 @@ for quartile_val in quartiles:
   region_count = quartile_current['Region'].value_counts().reset_index()
   region_count.columns = ['Region', 'Count']
 
-  quartile_val = int(quartile_val)
 
   pieChart = px.pie(region_count,
                     values='Count',
