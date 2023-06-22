@@ -158,7 +158,7 @@ st.header("Hypothesis: Do higher taxes relate to more economic freedom?")
 TIQ = dfw.head(165)
 sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
-n = 10
+n = 100
 top_tcountries = sorted_dfw.head(n)
 
 #st.plotly_chart(
@@ -183,7 +183,7 @@ TbQ = df.head()
 sorted_df = TbQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
 n = 50
-taxable_quantiles = sorted.df.head(n)
+taxable_quantiles = sorted_df.head(n)
 
 st.plotly_chart(
   px.bar(taxable_quantiles,
