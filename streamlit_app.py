@@ -107,17 +107,17 @@ kai = dfw.copy()
 
 quartiles = kai['Quartile'].unique() # 1,2,3,4
 
-for quartile in quartiles:
-    quartile_current = kai[kai['Quartile'] == quartile]
+for quartile_val in quartiles:
+    quartile_current = kai[kai['Quartile'] == quartile_val]
     quartile_counts = quartile_current.shape[0]
 
     region_count = quartile_current['Region'].value_counts().reset_index()
     region_count.columns = ['Region', 'Count']
 
-    quartile = int(quartile)
+    quartile_val = int(quartile_val)
 
     pieChart = px.pie(region_count, values='Count', names='Region',
-                 title=f'Region Distribution in Quartile {quartile}')
+                      title=f'Region Distribution in Quartile {quartile_val}')
 
     st.plotly_chart(pieChart)
 
