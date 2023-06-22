@@ -217,7 +217,6 @@ govt_employ = sorted_df.head(n)
 bar_plot1 =  px.bar(govt_employ,
          x="Quantile",
          y="Government Employment",
-         hue="Economic Freedom Summary Index",
          title="Government employ. effect on quantile of states")
 
 st.plotly_chart(bar_plot1)
