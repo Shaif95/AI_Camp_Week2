@@ -23,11 +23,15 @@ st.write("I'm Ava, ")
 #Tyler
 st.write("Hi, I'm Tyler.")
 #Sienna
-
+st.write("sienna")
 #On Economic Freedom Index : Kai
 st.title("Economic Freedom Index")
 st.header("Introduction")
 st.write("The Economic Freedom Index is a measure that assesses the level of economic freedom and openness in a country. It takes into account factors such as the rule of law, property rights, government intervention, and trade freedom, providing a comparative analysis of economic environments worldwide.")
+
+st.subheader("Data Tables:")
+df.head(5)
+dfw.head(5)
 # Kai
 # What are countries with most and least economic freedom ?
 
@@ -42,7 +46,8 @@ st.write("The Economic Freedom Index is a measure that assesses the level of eco
 
 #Tyler
 #How do Taxes relate to Economic Freedom Summary Index ?
-
+st.title("How do taxes relate to the Economic Freedom Summary Index?")
+st.header("Hypothesis: Do higher taxes relate to more economic freedom?")
 #Scatter Plot of Taxes vs Index (Hue Quartile)
 
 #What is relation of taxes and Govt emloyment with Quartile.
@@ -59,8 +64,36 @@ st.write("The Economic Freedom Index is a measure that assesses the level of eco
 #Ava
 # What are US states with most and least economic freedom ?
 st.title("US States with Most and Least Economic Fredom")
-st.header("Which States Have The Most Economic Freedom?")
+st.header("Hypothesis: Which States Have The Most Economic Freedom?")
+data1 = df.head(165)
 
+sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
+
+n = 10
+top_states = sorted_df.head(n)
+
+fig = st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+             title=f'Top {n} States by Index'))
+
+fig.update_yaxes(range=[6,8])
+
+fig.show()
+
+st.header("Hypothesis: Which States Have The Least Economic Freedom?")
+
+data1 = df.head(165)
+
+sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=True)
+
+n = 10
+top_states = sorted_df.head(n)
+
+fig = st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+             title=f'Bottom {n} States by Index'))
+
+fig.update_yaxes(range=[2,6])
+
+fig.show()
 
 # Bar chart of index and top countries
 
