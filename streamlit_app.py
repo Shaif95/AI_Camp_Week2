@@ -193,12 +193,13 @@ sorted_df = TbQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 50
 taxable_quantiles = sorted_df.head(n)
 
-st.plotly_chart(
-  px.bar(taxable_quantiles,
+bar_plot =   px.bar(taxable_quantiles,
          x="Quantile",
          y="Taxes",
          hue="Economic Freedom Summary Index",
-         title="Tax impact on quantiles of states"))
+         title="Tax impact on quantiles of states")
+
+st.plotly_chart(bar_plot)
 
 GovtQ = df.head()
 sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
