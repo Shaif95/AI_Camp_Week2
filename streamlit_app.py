@@ -37,7 +37,17 @@ st.dataframe(dfw)
 st.title("Countries with Most and Least Economic Freedom")
 st.header("Hypothesis: What countries have the highest and lowest Economic Freedom Index?")
 # Bar chart of index and top countries
+kai = dfw.head(165)
+sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 
+n = 25
+top_countries = sorted_dfw.head(n)
+
+fig = px.bar(top_countries, x='Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index', title=f'Top {n} Countries by Index (2020)')
+
+fig.update_yaxes(range=[7.5, 8.6])
+
+st.plotly_chart(fig)
 #Does location affect the economic freedom summary index for countries ?
 
 #Scatter Plots for index vs region
@@ -50,11 +60,10 @@ st.header("Hypothesis: What countries have the highest and lowest Economic Freed
 st.title("How do taxes relate to the Economic Freedom Summary Index?")
 st.header("Hypothesis: Do higher taxes relate to more economic freedom?")
 #Scatter Plot of Taxes vs Index (Hue Quartile)
-fig = st.plotly_chart(px.s(
-    data=dfw.head(100),
-    x="Economic Freedom Summary Index", y="1D  Top marginal tax rate",
-    hue="Quartile",
-)
+TIQ = dfw.head(165)
+sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
+
+n=
 #What is relation of taxes and Govt emloyment with Quartile.
 
 #Bar chart of mean of taxes for each quartile.
@@ -101,6 +110,8 @@ st.plotly_chart(px.bar(top_states, x= 'State/Province', y='Economic Freedom Summ
 
 # Bar chart of index and top countries
 
+st.header("Hypothesis: Which Countries Have The Highest Economic Freedom?")
+
 data1 = wdf.head(165)
 
 sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
@@ -108,8 +119,8 @@ sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=False)
 n = 10
 top_country = sorted_df.head(n)
 
-fig = px.bar(top_country, x= 'Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
-             title=f'Top {n} Countries by Index')
+fig = st.plotly_chart(px.bar(top_country, x= 'Countries', y='Economic Freedom Summary Index', color='Economic Freedom Summary Index',
+             title=f'Top {n} Countries by Index'))
 
 fig.update_yaxes(range=[6.5,9])
 
