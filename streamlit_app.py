@@ -5,6 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import warnings
 import io
+import math
 
 warnings.filterwarnings("ignore")
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -185,26 +186,27 @@ sorted_df = TbQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 50
 taxable_quantiles = sorted_df.head(n)
 
-st.plotly_chart(
-  px.bar(taxable_quantiles,
-         x="Quantile",
-         y="Taxes",
-         hue="Economic Freedom Summary Index",
-         title="Tax impact on quantiles of states"))
+#st.plotly_chart(
+#  px.bar(taxable_quantiles,
+#         x="Quantile",
+#         y="Taxes",
+#         hue="Economic Freedom Summary Index",
+#         title="Tax impact on quantiles of states"))
 
 GovtQ = df.head()
 sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
                               ascending=False)
 
 n = 50
-govt_employ = sorted.df.head(n)
+govt_employ = sorted_df.head(n)
 
-st.plotly_chart(
-  px.bar(govt_employ,
-         x="Quantile",
-         y="Government Employment",
-         hue="Economic Freedom Summary Index",
-         title="Government employ. effect on quantile of states"))
+#st.plotly_chart(
+#  px.bar(govt_employ,
+#         x="Quantile",
+#         y="Government Employment",
+#         hue="Economic Freedom Summary Index",
+#         title="Government employ. effect on quantile of states"))
+
 st.write(
   "As we can see in these two charts, the taxes and government employment do factor into the effective quantile a state is in. The charts show that the taxation has a larger impact on quantile than employment."
 )
