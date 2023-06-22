@@ -68,7 +68,13 @@ st.write("The graph above shows the bottom 25 countries by the Economic Freedom 
 st.title("Relation Between Location and Index")
 st.header("Hypothesis: Does location affect the econonomic freedom index for countries?")
 #Scatter Plots for index vs region
+bar = dfw.head(165)
 
+kai = px.scatter(bar, x="Region", y="Economic Freedom Summary Index", color="Region", title="EFSI vs Region (2020)")
+
+st.plotly_chart(kai)
+
+st.write("The graph above shows the relation between the Economic Freedom Summary Index and the Region where a country lies. North America, Oceania, and Europe all have a relatively high index while countries in Africa and Latin America aren't as fortunate.")
 #Does economic freedom Quartile relate to region ?
 #Pie Charts
 
@@ -83,8 +89,8 @@ sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 n = 100
 top_tcountries = sorted_dfw.head(n)
 
-st.plotly_chart(px.scatter(top_tcountries, x= "Economic Freedom Summary Index", y= "1D  Top marginal tax rate", hue="Quartile",
-                          title=f"Top {n} countries by taxed quartile"))
+st.plotly_chart(px.scatter(top_countries, x="Economic Freedom Summary Index", y="1D  Top marginal tax rate", hue="Quartile").update_layout(title='Scatter Plot', xaxis_title='Economic Freedom Summary Index', yaxis_title='1D Top marginal tax rate'))
+
 #What is relation of taxes and Govt emloyment with Quartile.
 
 #Bar chart of mean of taxes for each quartile.
