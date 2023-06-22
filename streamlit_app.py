@@ -313,15 +313,22 @@ world1 = dfw
 quartiles = [1, 2, 3, 4]  # Adjust the quartile values as per your data
 
 for q in quartiles:
-    quartile_current = world1[world1['Quartile'] == q]
+  quartile_current = world1[world1['Quartile'] == q]
 
-    quartile_counts = quartile_current.shape[0]
+  quartile_counts = quartile_current.shape[0]
 
-    income_count = quartile_current['World Bank Current Income Classification, 1990-present'].value_counts().reset_index()
-    income_count.columns = ['World Bank Current Income Classification, 1990-present', 'Count']
+  income_count = quartile_current[
+    'World Bank Current Income Classification, 1990-present '].value_counts(
+    ).reset_index()
+  income_count.columns = [
+    'World Bank Current Income Classification, 1990-present ', 'Count'
+  ]
 
-    st.plotly_chart(px.pie(income_count, values='Count', names='World Bank Current Income Classification, 1990-present',
-                           title=f'Income Classification in Quartile {q}'))
+  st.plotly_chart(
+    px.pie(income_count,
+           values='Count',
+           names='World Bank Current Income Classification, 1990-present ',
+           title=f'Income Classification in Quartile {q}'))
 
 # Conclusion
 st.write("Conclusion: Ava")
