@@ -9,14 +9,13 @@ import io
 warnings.filterwarnings("ignore")
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.title("Streamlit on Replit")
-
 df = pd.read_csv("usa.csv")
 dfw = pd.read_csv("world.csv")
 
 st.write(df.head(1))
 
 #Introduction : Agile Antelopes
+st.header("Agile Antelopes")
 
 #Kai
 
