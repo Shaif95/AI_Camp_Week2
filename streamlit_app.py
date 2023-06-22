@@ -16,11 +16,17 @@ dfw = pd.read_csv("world.csv")
 st.title("Agile Antelopes")
 
 #Kai
-st.write("My name is Kai, I'm a junior and I join AI camp to take up some of my summer.")
+st.write(
+  "My name is Kai, I'm a junior and I join AI camp to take up some of my summer."
+)
 #Ava
-st.write("I'm Ava, I'm a sophomore and I joined AI camp to learn more about coding because it has always been an interesting subject to me. ")
+st.write(
+  "I'm Ava, I'm a sophomore and I joined AI camp to learn more about coding because it has always been an interesting subject to me. "
+)
 #Tyler
-st.write("Hi, I'm Tyler. I'm a rising junior and I joined AI camp to explore coding and if it could be an interesting career path.")
+st.write(
+  "Hi, I'm Tyler. I'm a rising junior and I joined AI camp to explore coding and if it could be an interesting career path."
+)
 #Sienna
 st.write("Hi, I'm Sienna.")
 #On Economic Freedom Index : Kai
@@ -101,39 +107,51 @@ st.write(
 )
 #Does economic freedom Quartile relate to region ?
 st.title("Relation Between Location and Quartile")
-st.header("Hypothesis: Does economic freedom and a country's quartile relate to the region a country is in?")
+st.header(
+  "Hypothesis: Does economic freedom and a country's quartile relate to the region a country is in?"
+)
 #Pie Charts
 kai = dfw.copy()
 
-quartiles = kai['Quartile'].unique() # 1,2,3,4
+quartiles = kai['Quartile'].unique()  # 1,2,3,4
 
 for quartile_val in quartiles:
-    quartile_current = kai[kai['Quartile'] == quartile_val]
-    quartile_counts = quartile_current.shape[0]
+  quartile_current = kai[kai['Quartile'] == quartile_val]
+  quartile_counts = quartile_current.shape[0]
 
-    region_count = quartile_current['Region'].value_counts().reset_index()
-    region_count.columns = ['Region', 'Count']
+  region_count = quartile_current['Region'].value_counts().reset_index()
+  region_count.columns = ['Region', 'Count']
 
-    quartile_val = int(quartile_val)
+  quartile_val = int(quartile_val)
 
-    pieChart = px.pie(region_count, values='Count', names='Region',
-                      title=f'Region Distribution in Quartile {quartile_val}')
+  pieChart = px.pie(region_count,
+                    values='Count',
+                    names='Region',
+                    title=f'Region Distribution in Quartile {quartile_val}')
 
-    st.plotly_chart(pieChart)
+  st.plotly_chart(pieChart)
 
-st.write("These four graphs show the Region distribution amongst the four quartiles. A majority of Quartile 1 is made up of European nations while Quartile 4 is made up of Africa, Latin America, and South Asia.")
+st.write(
+  "These four graphs show the Region distribution amongst the four quartiles. A majority of Quartile 1 is made up of European nations while Quartile 4 is made up of Africa, Latin America, and South Asia."
+)
 
-#Sienna 
+#Sienna
 
 #What is the genral distribution of Economic Freedom Index?
 st.title("Economic Freedom Index Distribution")
-st.header("Hypothesis: What is the general distribution of the Economic Freedom Index?")
+st.header(
+  "Hypothesis: What is the general distribution of the Economic Freedom Index?"
+)
 #Histogram Plot of Economic Freedom Index
-fig = px.histogram(df, x="Economic Freedom Summary Index", title="Histogram of Economic Freedom Summary Index")
+fig = px.histogram(df,
+                   x="Economic Freedom Summary Index",
+                   title="Histogram of Economic Freedom Summary Index")
 
 st.plotly_chart(fig)
 
-st.write("This graph shows the distribution of the Economic Freedom Index throughout the 50 states in the US, plus Puerto Rico. This graph is heavily skewed right, with an average index of 6.15 and an outlier of 2.04 being Puerto Rico")
+st.write(
+  "This graph shows the distribution of the Economic Freedom Index throughout the 50 states in the US, plus Puerto Rico. This graph is heavily skewed right, with an average index of 6.15 and an outlier of 2.04 being Puerto Rico"
+)
 #Tyler
 #How do Taxes relate to Economic Freedom Summary Index ?
 st.title("How do taxes relate to the Economic Freedom Summary Index?")
@@ -153,7 +171,9 @@ st.plotly_chart(
                title='Scatter Plot',
                xaxis_title='Economic Freedom Summary Index',
                yaxis_title='1D Top marginal tax rate'))
-st.write("The chart shoes that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation.")
+st.write(
+  "The chart shoes that the taxes do not directly correlate to a level of economic freedom. This means that there is more that effects the EFSI than just taxation."
+)
 #What is relation of taxes and Govt emloyment with Quartile.
 
 #Bar chart of mean of taxes for each quartile.
@@ -170,23 +190,25 @@ st.plotly_chart(
   px.bar(taxable_quantiles,
          x="Quantile",
          y="Taxes",
-        hue="Economic Freedom Summary Index",
-        title="Tax impact on quantiles of states"))
+         hue="Economic Freedom Summary Index",
+         title="Tax impact on quantiles of states"))
 
 GovtQ = df.head()
-sorted_df = GovtQ.sort_values("Economic Freedom Summary Index", ascending=False)
+sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
+                              ascending=False)
 
 n = 50
 govt_employ = sorted.df.head(n)
 
 st.plotly_chart(
   px.bar(govt_employ,
-        x="Quantile",
-        y="Government Employment",
-        hue="Economic Freedom Summary Index",
-        title="Government employ. effect on quantile of states"))
-st.write("As we can see in these two charts, the taxes and government employment do factor into the effective quantile a state is in. The charts show that the taxation has a larger impact on quantile than employment.")
-
+         x="Quantile",
+         y="Government Employment",
+         hue="Economic Freedom Summary Index",
+         title="Government employ. effect on quantile of states"))
+st.write(
+  "As we can see in these two charts, the taxes and government employment do factor into the effective quantile a state is in. The charts show that the taxation has a larger impact on quantile than employment."
+)
 
 #Ava
 # What are US states with most and least economic freedom ?
@@ -248,22 +270,33 @@ st.plotly_chart(
 
 # What is relation of Min Wage with Quartile?
 
-st.header("Hypothesis: What Is The Relation of Minimum Wage With Quartile in the US?")
+st.header(
+  "Hypothesis: What Is The Relation of Minimum Wage With Quartile in the US?")
 
-mean_summary_index = df.groupby('Quantile')['Minimum Wage Legislation'].mean().reset_index()
+mean_summary_index = df.groupby(
+  'Quantile')['Minimum Wage Legislation'].mean().reset_index()
 
-st.plotly_chart(px.bar(mean_summary_index, x='Quantile', y='Minimum Wage Legislation', color='Quantile',
-             title='Minimum Wage Legislation by Quartile (1970 - 2020)'))
+st.plotly_chart(
+  px.bar(mean_summary_index,
+         x='Quantile',
+         y='Minimum Wage Legislation',
+         color='Quantile',
+         title='Minimum Wage Legislation by Quartile (1970 - 2020)'))
 
-st.write("Here we can see that Quartile 1 has the highest Minimum Wage Legislation.")
+st.write(
+  "Here we can see that Quartile 1 has the highest Minimum Wage Legislation.")
 # Bar chart of taxes for each quartile.
 
 st.heading("Hypothesis: Which Quartile in the US Has The Highest Taxes?")
 
 mean_summary_index = df.groupby('Quantile')['Taxes'].mean().reset_index()
 
-st.plotly_chart(px.bar(mean_summary_index, x='Quantile', y='Taxes', color='Quantile',
-             title='Taxes by Quartile (1970 - 2020)'))
+st.plotly_chart(
+  px.bar(mean_summary_index,
+         x='Quantile',
+         y='Taxes',
+         color='Quantile',
+         title='Taxes by Quartile (1970 - 2020)'))
 
 st.write("Quartile 1 has the highest taxes")
 
@@ -272,23 +305,27 @@ st.header("Hypothesis: How Does Income Classification Vary Between Quartiles?")
 
 world1 = dfw
 
-quartiles = world1["Quartile"].unique() # 1,2,3,4
+quartiles = world1["Quartile"].unique()  # 1,2,3,4
 
 for quartile in quartiles:
-    quartile_current = world1[world1['Quartile'] == quartile]
+  quartile_current = world1[world1['Quartile'] == quartile]
 
-    quartile_counts = quartile_current.shape[0]
+  quartile_counts = quartile_current.shape[0]
 
-    income_count = quartile_current['World Bank Current Income Classification, 1990-present '].value_counts().reset_index()
-    income_count.columns = ['World Bank Current Income Classification, 1990-present', 'Count']
+  income_count = quartile_current[
+    'World Bank Current Income Classification, 1990-present '].value_counts(
+    ).reset_index()
+  income_count.columns = [
+    'World Bank Current Income Classification, 1990-present', 'Count'
+  ]
 
-    #so it is not a float
-    quartile = int(quartile)
+  #so it is not a float
+  quartile = int(quartile)
 
-    st.plotly_chart(px.pie(income_count, values='Count', names='World Bank Current Income Classification, 1990-present',
-                 title=f'Income Classification in Quantile {quartile}'))
-
-
-
+  st.plotly_chart(
+    px.pie(income_count,
+           values='Count',
+           names='World Bank Current Income Classification, 1990-present',
+           title=f'Income Classification in Quantile {quartile}'))
 
 #Conclusion : Ava
