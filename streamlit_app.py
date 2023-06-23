@@ -16,14 +16,16 @@ dfw = pd.read_csv("world.csv")
 #Introduction : Agile Antelopes
 st.title("Agile Antelopes")
 
-#Kai
-st.write(
-  "My name is Kai, I'm a junior and I join AI camp to do something somewhat productive over summer."
-)
 #Ava
 st.write(
   "I'm Ava, I'm a sophomore and I joined AI camp to learn more about coding because it has always been an interesting subject to me. "
 )
+
+#Kai
+st.write(
+  "My name is Kai, I'm a junior and I join AI camp to do something somewhat productive over summer."
+)
+
 #Tyler
 st.write(
   "Hi, I'm Tyler. I'm a rising junior and I joined AI camp to explore coding and if it could be an interesting career path."
