@@ -229,7 +229,7 @@ st.write(
 
 #Ava
 # What are US states with most and least economic freedom ?
-st.title("US States with Most and Least Economic Fredom")
+st.title("US States with Most and Least Economic Freedom : Ava")
 st.header("Hypothesis 6: Which States Have The Most Economic Freedom?")
 data1 = df
 
