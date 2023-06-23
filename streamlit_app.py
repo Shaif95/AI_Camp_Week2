@@ -51,21 +51,21 @@ st.header(
   "Hypothesis 1: What countries have the highest and lowest Economic Freedom Index?"
 )
 # Bar chart of index and top countries
-kai = dfw
+kai = dfw.head(150)
 sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 
 n = 25
 top_countries = sorted_dfw.head(n)
 
-fig = px.bar(top_countries,
+fig1 = px.bar(top_countries,
              x='Countries',
              y='Economic Freedom Summary Index',
              color='Economic Freedom Summary Index',
              title=f'Top {n} Countries by Index (2020)')
 
-fig.update_yaxes(range=[7.5, 8.6])
+fig1.update_yaxes(range=[7.5, 8.6])
 
-st.plotly_chart(fig)
+st.plotly_chart(fig1)
 
 st.write(
   "The graph above shows the top 25 countries by the Economic Freedom Summary Index. The countries with the highest index are Hong Kong and Singapore, both small Asian nations with high economic development."
@@ -162,7 +162,7 @@ st.write(
 st.title("How do taxes relate to the Economic Freedom Summary Index? Tyler")
 st.header("Hypothesis 4: Do higher taxes relate to more economic freedom?")
 #Scatter Plot of Taxes vs Index (Hue Quartile)
-TIQ = dfw.head(150)
+TIQ = dfw.head(165)
 sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
 n = 100
@@ -292,12 +292,12 @@ st.write("Hypothesis: Which Quartile in the US Has The Highest Taxes?")
 
 mean_summary_index = df.groupby('Quantile')['Taxes'].mean().reset_index()
 
-#st.plotly_chart(
-#  px.bar(mean_summary_index,
-#         x='Quantile',
-#         y='Taxes',
-#         color='Quantile',
-#         title='Taxes by Quartile (1970 - 2020)'))
+st.plotly_chart(
+  px.bar(mean_summary_index,
+         x='Quantile',
+         y='Taxes',
+         color='Quantile',
+         title='Taxes by Quartile (1970 - 2020)'))
 
 st.write("Quartile 1 has the highest taxes")
 
