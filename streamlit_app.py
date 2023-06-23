@@ -71,7 +71,7 @@ st.write(
   "The graph above shows the top 25 countries by the Economic Freedom Summary Index. The countries with the highest index are Hong Kong and Singapore, both small Asian nations with high economic development."
 )
 
-kai = dfw
+kai = dfw.head(150)
 sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 n = 25
 bottom_countries = sorted_dfw.tail(n)
@@ -271,7 +271,8 @@ st.plotly_chart(
 # What is relation of Min Wage with Quartile?
 
 st.header(
-  "Hypothesis 8: What Is The Relation of Minimum Wage With Quartile in the US?")
+  "Hypothesis 8: What Is The Relation of Minimum Wage With Quartile in the US?"
+)
 
 mean_summary_index = df.groupby(
   'Quantile')['Minimum Wage Legislation'].mean().reset_index()
@@ -301,7 +302,8 @@ mean_summary_index = df.groupby('Quantile')['Taxes'].mean().reset_index()
 st.write("Quartile 1 has the highest taxes")
 
 #Relation of Income claasification and quartile in the world ?
-st.header("Hypothesis 9: How Does Income Classification Vary Between Quartiles?")
+st.header(
+  "Hypothesis 9: How Does Income Classification Vary Between Quartiles?")
 
 world1 = dfw
 
