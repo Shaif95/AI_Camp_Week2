@@ -162,7 +162,7 @@ st.write(
 st.title("How do taxes relate to the Economic Freedom Summary Index? Tyler")
 st.header("Hypothesis 4: Do higher taxes relate to more economic freedom?")
 #Scatter Plot of Taxes vs Index (Hue Quartile)
-TIQ = dfw
+TIQ = dfw.head(150)
 sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
 n = 100
