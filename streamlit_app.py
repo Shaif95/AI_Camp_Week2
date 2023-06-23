@@ -326,7 +326,4 @@ for q in quartiles:
            title=f'Income Classification in Quartile {q}'))
 
 #Conclusion : Ava
-st.write("In conclusion, Our data science project analyzed the Economic Freedom 
-  Index to gain insights into economic environments worldwide. The project team explored factors such
-   as location, taxes, and minimum wage, providing valuable findings for understanding the relationship 
-   between economic freedom and various influential factors.")
+st.write("In conclusion, Our data science project analyzed the Economic Freedom Index to gain insights into economic environments worldwide. The project team explored factors such as location, taxes, and minimum wage, providing valuable findings for understanding the relationship  between economic freedom and various influential factors.")
