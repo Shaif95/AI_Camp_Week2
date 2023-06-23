@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import seaborn as sns
-import matplotlib.pyplot as plt
+#import seaborn as sns
+#import matplotlib.pyplot as plt
 import warnings
-import io
+#import io
 import math
 
 warnings.filterwarnings("ignore")
@@ -18,7 +18,7 @@ st.title("Agile Antelopes")
 
 #Kai
 st.write(
-  "My name is Kai, I'm a junior and I join AI camp to take up some of my summer."
+  "My name is Kai, I'm a junior and I join AI camp to do something somewhat productive over summer."
 )
 #Ava
 st.write(
@@ -34,12 +34,14 @@ st.write("Hi, I'm Sienna.")
 st.title("Economic Freedom Index")
 st.header("Introduction")
 st.write(
-  "The Economic Freedom Index is a measure that assesses the level of economic freedom and openness in a country. It takes into account factors such as the rule of law, property rights, government intervention, and trade freedom, providing a comparative analysis of economic environments worldwide."
+  "The Economic Freedom Index is a measure that assesses the level of economic freedom and openness in a country. It takes into account factors such as the rule of law, property rights, government intervention, and trade freedom, providing a comparative analysis of economic environments worldwide. This page discusses this statistic and how it relates to states in the United States and countries around the world. The data is based on the Fraser Institute."
 )
 
 st.subheader("Data Tables:")
 st.dataframe(df)
+st.write("Data about all 50 states, plus Puerto Rico, from the year 2020")
 st.dataframe(dfw)
+st.write("Data about 165 countries from 1970-2020")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 # Kai
@@ -214,10 +216,10 @@ sorted_df = GovtQ.sort_values("Economic Freedom Summary Index",
 n = 50
 govt_employ = sorted_df.head(n)
 
-bar_plot1 =  px.bar(govt_employ,
-         x="Quantile",
-         y="Government Employment",
-         title="Government employ. effect on quantile of states")
+bar_plot1 = px.bar(govt_employ,
+                   x="Quantile",
+                   y="Government Employment",
+                   title="Government employ. effect on quantile of states")
 
 st.plotly_chart(bar_plot1)
 
@@ -265,7 +267,6 @@ st.plotly_chart(
          title=f'Bottom {n} States by Index'))
 
 # Bar chart of index and top countries
-
 
 # What is relation of Min Wage with Quartile?
 
@@ -325,3 +326,7 @@ for q in quartiles:
            title=f'Income Classification in Quartile {q}'))
 
 #Conclusion : Ava
+st.write("In conclusion, Our data science project analyzed the Economic Freedom 
+  Index to gain insights into economic environments worldwide. The project team explored factors such
+   as location, taxes, and minimum wage, providing valuable findings for understanding the relationship 
+   between economic freedom and various influential factors.")
