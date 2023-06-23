@@ -29,7 +29,7 @@ st.write(
   "Hi, I'm Tyler. I'm a rising junior and I joined AI camp to explore coding and if it could be an interesting career path."
 )
 #Sienna
-st.write("Hi, I'm Sienna.")
+#st.write("Hi, I'm Sienna.")
 #On Economic Freedom Index : Kai
 st.title("Economic Freedom Index")
 st.header("Introduction")
@@ -38,20 +38,20 @@ st.write(
 )
 
 st.subheader("Data Tables:")
-st.dataframe(df)
+st.dataframe(df.head(3))
 st.write("Data about all 50 states, plus Puerto Rico, from the year 2020")
-st.dataframe(dfw)
+st.dataframe(dfw.head(3))
 st.write("Data about 165 countries from 1970-2020")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 # Kai
 # What are countries with most and least economic freedom ?
-st.title("Countries with Most and Least Economic Freedom")
+st.title("Countries with Most and Least Economic Freedom : Kai")
 st.header(
-  "Hypothesis: What countries have the highest and lowest Economic Freedom Index?"
+  "Hypothesis 1: What countries have the highest and lowest Economic Freedom Index?"
 )
 # Bar chart of index and top countries
-kai = dfw.head(165)
+kai = dfw
 sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 
 n = 25
@@ -71,7 +71,7 @@ st.write(
   "The graph above shows the top 25 countries by the Economic Freedom Summary Index. The countries with the highest index are Hong Kong and Singapore, both small Asian nations with high economic development."
 )
 
-kai = dfw.head(165)
+kai = dfw
 sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 n = 25
 bottom_countries = sorted_dfw.tail(n)
@@ -92,7 +92,7 @@ st.write(
 #Does location affect the economic freedom summary index for countries ?
 st.title("Relation Between Location and Index")
 st.header(
-  "Hypothesis: Does location affect the econonomic freedom index for countries?"
+  "Hypothesis 2: Does location affect the econonomic freedom index for countries?"
 )
 #Scatter Plots for index vs region
 bar = dfw.head(165)
@@ -111,7 +111,7 @@ st.write(
 #Does economic freedom Quartile relate to region ?
 st.title("Relation Between Location and Quartile")
 st.header(
-  "Hypothesis: Does economic freedom and a country's quartile relate to the region a country is in?"
+  "Hypothesis 3: Does economic freedom and a country's quartile relate to the region a country is in?"
 )
 #Pie Charts
 kai = dfw.copy()
@@ -145,7 +145,7 @@ st.write(
 #What is the genral distribution of Economic Freedom Index?
 st.title("Economic Freedom Index Distribution")
 st.header(
-  "Hypothesis: What is the general distribution of the Economic Freedom Index?"
+  "Hypothesis 4: What is the general distribution of the Economic Freedom Index?"
 )
 #Histogram Plot of Economic Freedom Index
 fig = px.histogram(df,
@@ -159,8 +159,8 @@ st.write(
 )
 #Tyler
 #How do Taxes relate to Economic Freedom Summary Index ?
-st.title("How do taxes relate to the Economic Freedom Summary Index?")
-st.header("Hypothesis: Do higher taxes relate to more economic freedom?")
+st.title("How do taxes relate to the Economic Freedom Summary Index? Tyler")
+st.header("Hypothesis 4: Do higher taxes relate to more economic freedom?")
 #Scatter Plot of Taxes vs Index (Hue Quartile)
 TIQ = dfw.head(165)
 sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
@@ -189,7 +189,7 @@ st.write(
 
 #Bar chart of mean of taxes for each quartile.
 #Bar chart of mean of Govt employment with quartile.
-st.header("Hypothesis: Do taxes and govt. employment affect the quantile?")
+st.header("Hypothesis 5: Do taxes and govt. employment affect the quantile?")
 
 TbQ = df.head()
 sorted_df = TbQ.sort_values("Economic Freedom Summary Index", ascending=False)
@@ -230,8 +230,8 @@ st.write(
 #Ava
 # What are US states with most and least economic freedom ?
 st.title("US States with Most and Least Economic Fredom")
-st.header("Hypothesis: Which States Have The Most Economic Freedom?")
-data1 = df.head(165)
+st.header("Hypothesis 6: Which States Have The Most Economic Freedom?")
+data1 = df
 
 sorted_df = data1.sort_values('Economic Freedom Summary Index',
                               ascending=False)
@@ -250,9 +250,9 @@ st.write(
   "We can see from the bar graph that the states with the highest economic freedom are Florida, New Hampshire, and South Dakota"
 )
 
-st.header("Hypothesis: Which States Have The Least Economic Freedom?")
+st.header("Hypothesis 7: Which States Have The Least Economic Freedom?")
 
-data1 = df.head(165)
+data1 = df
 
 sorted_df = data1.sort_values('Economic Freedom Summary Index', ascending=True)
 
@@ -271,7 +271,7 @@ st.plotly_chart(
 # What is relation of Min Wage with Quartile?
 
 st.header(
-  "Hypothesis: What Is The Relation of Minimum Wage With Quartile in the US?")
+  "Hypothesis 8: What Is The Relation of Minimum Wage With Quartile in the US?")
 
 mean_summary_index = df.groupby(
   'Quantile')['Minimum Wage Legislation'].mean().reset_index()
@@ -301,7 +301,7 @@ mean_summary_index = df.groupby('Quantile')['Taxes'].mean().reset_index()
 st.write("Quartile 1 has the highest taxes")
 
 #Relation of Income claasification and quartile in the world ?
-st.header("Hypothesis: How Does Income Classification Vary Between Quartiles?")
+st.header("Hypothesis 9: How Does Income Classification Vary Between Quartiles?")
 
 world1 = dfw
 
@@ -325,8 +325,12 @@ for q in quartiles:
            names='World Bank Current Income Classification, 1990-present ',
            title=f'Income Classification in Quartile {q}'))
 
-st.write("We can see that High income countries are over represented in 1st Quartile and low Income are in 4th Quartile.")
+st.write(
+  "We can see that High income countries are over represented in 1st Quartile and low Income are in 4th Quartile."
+)
 
 st.header("Conclusion :")
 #Conclusion : Ava
-st.write("In conclusion, Our data science project analyzed the Economic Freedom Index to gain insights into economic environments worldwide. The project team explored factors such as location, taxes, and minimum wage, providing valuable findings for understanding the relationship  between economic freedom and various influential factors.")
+st.write(
+  "In conclusion, Our data science project analyzed the Economic Freedom Index to gain insights into economic environments worldwide. The project team explored factors such as location, taxes, and minimum wage, providing valuable findings for understanding the relationship  between economic freedom and various influential factors."
+)
