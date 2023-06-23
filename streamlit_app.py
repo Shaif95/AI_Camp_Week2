@@ -72,7 +72,7 @@ st.write(
   "The graph above shows the top 25 countries by the Economic Freedom Summary Index. The countries with the highest index are Hong Kong and Singapore, both small Asian nations with high economic development."
 )
 
-kai = dfw.head(150)
+kai = dfw.head(165)
 sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 n = 25
 bottom_countries = sorted_dfw.tail(n)
