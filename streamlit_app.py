@@ -38,9 +38,9 @@ st.write(
 )
 
 st.subheader("Data Tables:")
-st.dataframe(df)
+st.dataframe(df.head(5))
 st.write("Part of the data about all 50 states, plus Puerto Rico, from the year 2020")
-st.dataframe(dfw)
+st.dataframe(dfw.head(5))
 st.write("Part of the data about 165 countries from 1970-2020")
 
 st.markdown("<hr>", unsafe_allow_html=True)
