@@ -16,16 +16,14 @@ dfw = pd.read_csv("world.csv")
 #Introduction : Agile Antelopes
 st.title("Agile Antelopes")
 
+#Kai
+st.write(
+  "My name is Kai, I'm a junior and I joined AI camp to do something somewhat productive over summer."
+)
 #Ava
 st.write(
   "I'm Ava, I'm a sophomore and I joined AI camp to learn more about coding because it has always been an interesting subject to me. "
 )
-
-#Kai
-st.write(
-  "My name is Kai, I'm a junior and I join AI camp to do something somewhat productive over summer."
-)
-
 #Tyler
 st.write(
   "Hi, I'm Tyler. I'm a rising junior and I joined AI camp to explore coding and if it could be an interesting career path."
@@ -41,7 +39,8 @@ st.write(
 
 st.subheader("Data Tables:")
 st.dataframe(df.head(5))
-st.write("Part of the data about all 50 states, plus Puerto Rico, from the year 2020")
+st.write(
+  "Part of the data about all 50 states, plus Puerto Rico, from the year 2020")
 st.dataframe(dfw.head(5))
 st.write("Part of the data about 165 countries from 1970-2020")
 
@@ -53,17 +52,17 @@ st.header(
   "Hypothesis 1: What countries have the highest and lowest Economic Freedom Index?"
 )
 # Bar chart of index and top countries
-kai = dfw.head(150)
+kai = dfw.head(165)
 sorted_dfw = kai.sort_values('Economic Freedom Summary Index', ascending=False)
 
 n = 25
 top_countries = sorted_dfw.head(n)
 
 fig1 = px.bar(top_countries,
-             x='Countries',
-             y='Economic Freedom Summary Index',
-             color='Economic Freedom Summary Index',
-             title=f'Top {n} Countries by Index (2020)')
+              x='Countries',
+              y='Economic Freedom Summary Index',
+              color='Economic Freedom Summary Index',
+              title=f'Top {n} Countries by Index (2020)')
 
 fig1.update_yaxes(range=[7.5, 8.6])
 
@@ -113,7 +112,7 @@ st.write(
 #Does economic freedom Quartile relate to region ?
 st.title("Relation Between Location and Quartile")
 st.header(
-  "Hypothesis 3: Does economic freedom and a country's quartile relate to the region a country is in?"
+  "Hypothesis 3: Do economic freedom and a country's quartile relate to the region a country is in?"
 )
 #Pie Charts
 kai = dfw.copy()
