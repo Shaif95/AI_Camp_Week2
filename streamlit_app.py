@@ -34,14 +34,14 @@ st.write(
 st.title("Economic Freedom Index")
 st.header("Introduction")
 st.write(
-  "The Economic Freedom Index is a measure that assesses the level of economic freedom and openness in a country. It takes into account factors such as the rule of law, property rights, government intervention, and trade freedom, providing a comparative analysis of economic environments worldwide. This page discusses this statistic and how it relates to states in the United States and countries around the world. The data is based on the Fraser Institute."
+  "The Economic Freedom Index is a measure that assesses the level of economic freedom and openness in a country. It takes into account factors such as the rule of law, property rights, government intervention, and trade freedom, providing a comparative analysis of economic environments worldwide. This page discusses this statistic and how it relates to states in the United States and countries around the world. The data is based on information from the Fraser Institute."
 )
 
 st.subheader("Data Tables:")
-st.dataframe(df.head(3))
-st.write("Data about all 50 states, plus Puerto Rico, from the year 2020")
-st.dataframe(dfw.head(3))
-st.write("Data about 165 countries from 1970-2020")
+st.dataframe(df)
+st.write("Part of the data about all 50 states, plus Puerto Rico, from the year 2020")
+st.dataframe(dfw)
+st.write("Part of the data about 165 countries from 1970-2020")
 
 st.markdown("<hr>", unsafe_allow_html=True)
 # Kai
@@ -165,7 +165,7 @@ st.header("Hypothesis 4: Do higher taxes relate to more economic freedom?")
 TIQ = dfw.head(165)
 sorted_dfw = TIQ.sort_values("Economic Freedom Summary Index", ascending=False)
 
-n = 100
+n = 165
 top_tcountries = sorted_dfw.head(n)
 
 scatter_plot = px.scatter(top_countries,
